@@ -1,8 +1,8 @@
-package org.example;
+package vpf24.cphbusiness;
 
-import org.example.applications.BlackjackGUI;
-import org.example.applications.BlackjackJavalinApp;
-import org.example.interfaces.GameUI;
+import vpf24.cphbusiness.applications.BlackjackGUI;
+import vpf24.cphbusiness.applications.BlackjackJavalinApp;
+import vpf24.cphbusiness.interfaces.GameUI;
 
 import javax.swing.*;
 import java.util.Scanner;

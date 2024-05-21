@@ -1,6 +1,6 @@
-package org.example;
+package vpf24.cphbusiness;
 
-import org.example.interfaces.Card;
+import vpf24.cphbusiness.interfaces.Card;
 
 class AceCard implements Card {
     private static final int DEFAULT_VALUE = 11;

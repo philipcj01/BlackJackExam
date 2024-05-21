@@ -1,6 +1,7 @@
-package org.example;
+package vpf24.cphbusiness;
 
-import org.example.interfaces.Card;
+import vpf24.cphbusiness.interfaces.Card;
+
 import java.util.ArrayList;
 import java.util.List;
 

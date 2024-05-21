@@ -1,6 +1,6 @@
-package org.example.interfaces;
+package vpf24.cphbusiness.interfaces;
 
-import org.example.BlackjackGame;
+import vpf24.cphbusiness.BlackjackGame;
 
 public interface GameUI {
     void updatePlayerHand(String hand);

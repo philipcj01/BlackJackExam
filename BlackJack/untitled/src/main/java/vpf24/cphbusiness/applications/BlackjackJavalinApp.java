@@ -1,9 +1,9 @@
-package org.example.applications;
+package vpf24.cphbusiness.applications;
 
 import io.javalin.Javalin;
 import io.javalin.http.staticfiles.Location;
-import org.example.BlackjackGame;
-import org.example.interfaces.GameUI;
+import vpf24.cphbusiness.BlackjackGame;
+import vpf24.cphbusiness.interfaces.GameUI;
 
 public class BlackjackJavalinApp implements GameUI {
     private BlackjackGame game;

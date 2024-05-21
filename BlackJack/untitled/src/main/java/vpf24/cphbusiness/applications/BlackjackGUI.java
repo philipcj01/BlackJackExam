@@ -1,7 +1,7 @@
-package org.example.applications;
+package vpf24.cphbusiness.applications;
 
-import org.example.BlackjackGame;
-import org.example.interfaces.GameUI;
+import vpf24.cphbusiness.BlackjackGame;
+import vpf24.cphbusiness.interfaces.GameUI;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

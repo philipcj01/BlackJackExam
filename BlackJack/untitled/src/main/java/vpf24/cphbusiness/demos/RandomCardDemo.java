@@ -1,4 +1,4 @@
-package org.example.demos;
+package vpf24.cphbusiness.demos;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;

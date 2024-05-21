@@ -1,6 +1,6 @@
-package org.example;
+package vpf24.cphbusiness;
 
-import org.example.interfaces.Card;
+import vpf24.cphbusiness.interfaces.Card;
 
 class NumberCard implements Card {
     private int value;

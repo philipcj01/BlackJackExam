@@ -1,8 +1,8 @@
-package org.example;
+package vpf24.cphbusiness;
 
-import org.example.interfaces.BlackJackInterface;
-import org.example.interfaces.Card;
-import org.example.interfaces.GameUI;
+import vpf24.cphbusiness.interfaces.BlackJackInterface;
+import vpf24.cphbusiness.interfaces.Card;
+import vpf24.cphbusiness.interfaces.GameUI;
 
 import java.util.List;
 

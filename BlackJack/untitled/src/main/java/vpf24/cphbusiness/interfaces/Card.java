@@ -1,4 +1,4 @@
-package org.example.interfaces;
+package vpf24.cphbusiness.interfaces;
 
 public interface Card {
     int getValue();
