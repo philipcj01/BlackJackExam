@@ -16,7 +16,7 @@ public class Launcher {
         System.out.print("Enter your choice: ");
 
         int choice = scanner.nextInt();
-        scanner.nextLine(); // Consume newline character
+        scanner.nextLine();
 
         GameUI gameUI;
         BlackjackGame game;

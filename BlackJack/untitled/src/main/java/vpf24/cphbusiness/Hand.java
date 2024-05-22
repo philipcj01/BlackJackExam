@@ -21,13 +21,13 @@ public class Hand {
         int aces = 0;
         for (Card card : cards) {
             int cardValue = card.getValue();
-            if (cardValue == 11) { // Assuming Ace is valued at 11 initially
+            if (cardValue == 11) {
                 aces++;
             }
             value += cardValue;
         }
 
-        // Adjust for Aces if value goes over 21
+        // Juster værdi for Aces hvis over 21
         while (value > 21 && aces > 0) {
             value -= 10;
             aces--;

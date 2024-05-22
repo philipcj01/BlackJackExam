@@ -111,8 +111,8 @@ public class BlackjackGUI extends JFrame implements GameUI {
     @Override
     public void setGame(BlackjackGame game) {
         this.game = game;
-        game.setGameUI(this);  // Ensure the game has a reference to this UI
-        game.startGame();  // Start the game
+        game.setGameUI(this);
+        game.startGame();
     }
 
     private ImageIcon combineCardImages(String cardNames) {

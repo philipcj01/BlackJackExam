@@ -21,7 +21,6 @@ public class RandomCardDemo extends JFrame {
     }
 
     private void showRandomCard() {
-        // Array of card names
         String[] cards = {
                 "2_of_spades.png", "3_of_spades.png", "4_of_spades.png", "5_of_spades.png", "6_of_spades.png",
         };

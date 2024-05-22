@@ -69,33 +69,33 @@ public class BlackjackJavalinApp implements GameUI {
 
     @Override
     public void updatePlayerTotal(int total) {
-        // No need to implement for Javalin
+        // Lav implementering til at vise værdi i Javalin - laves senere
     }
 
     @Override
     public void updateDealerTotal(int total) {
-        // No need to implement for Javalin
+        // Lav implementering til at vise værdi i Javalin - laves senere
     }
 
     @Override
     public void disableHitAndStandButtons() {
-        // No need to implement for Javalin
+        // Laves senere
     }
 
     @Override
     public void enableHitAndStandButtons() {
-        // No need to implement for Javalin
+        // Laves senere
     }
 
     @Override
     public void displayMessage(String message) {
-        // No need to implement for Javalin
+        // Laves senere
     }
 
     @Override
     public void setGame(BlackjackGame game) {
         this.game = game;
-        game.setGameUI(this);  // Ensure the game has a reference to this UI
-        game.startGame();  // Start the game
+        game.setGameUI(this);
+        game.startGame();
     }
 }
