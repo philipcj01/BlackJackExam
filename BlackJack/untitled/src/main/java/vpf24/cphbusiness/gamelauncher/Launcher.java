@@ -1,5 +1,6 @@
-package vpf24.cphbusiness;
+package vpf24.cphbusiness.gamelauncher;
 
+import vpf24.cphbusiness.BlackjackGame;
 import vpf24.cphbusiness.applications.BlackjackGUI;
 import vpf24.cphbusiness.applications.BlackjackJavalinApp;
 import vpf24.cphbusiness.interfaces.GameUI;
