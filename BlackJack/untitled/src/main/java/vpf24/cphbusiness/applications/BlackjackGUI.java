@@ -121,7 +121,7 @@ public class BlackjackGUI extends JFrame implements GameUI {
 
         try {
             for (String name : names) {
-                BufferedImage cardImage = ImageIO.read(Paths.get("BlackJack/untitled/src/main/resources/png/" + name).toFile());
+                BufferedImage cardImage = ImageIO.read(Paths.get("BlackJack/untitled/src/main/resources/public/png/" + name).toFile());
                 cardImages.add(cardImage);
             }
         } catch (IOException e) {
