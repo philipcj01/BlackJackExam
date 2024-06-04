@@ -66,9 +66,49 @@ public class BlackjackGUI extends JFrame implements GameUI {
     }
 
     private void addActionListeners() {
-        hitButton.addActionListener(e -> game.playerHits());
-        standButton.addActionListener(e -> game.playerStands());
-        dealButton.addActionListener(e -> game.startGame());
+        hitButton.addActionListener(e -> {
+            game.playerHits();
+            checkWinner();
+        });
+        standButton.addActionListener(e -> {
+            game.playerStands();
+            checkWinner();
+        });
+        dealButton.addActionListener(e -> {
+            game.startGame();
+            resetGame();
+        });
+    }
+
+    private void checkWinner() {
+        String result = game.determineWinner();
+        switch (result) {
+            case "Player busts. Dealer wins!":
+            case "Dealer busts. Player wins!":
+            case "It's a push! No one wins.":
+            case "Player wins!":
+            case "Dealer wins!":
+                displayMessage(result);
+                disableHitAndStandButtons();
+                break;
+            default:
+                enableHitAndStandButtons();
+                break;
+        }
+        updateUI();
+    }
+
+    private void resetGame() {
+        enableHitAndStandButtons();
+        displayMessage("Game started. Good luck!");
+        updateUI();
+    }
+
+    private void updateUI() {
+        updatePlayerHand(game.getCardName("player"));
+        updateDealerHand(game.getCardName("dealer"));
+        updatePlayerTotal(game.player.getHandValue());
+        updateDealerTotal(game.dealer.getHandValue());
     }
 
     @Override
@@ -121,10 +161,15 @@ public class BlackjackGUI extends JFrame implements GameUI {
 
         try {
             for (String name : names) {
-                BufferedImage cardImage = ImageIO.read(Paths.get("BlackJack/untitled/src/main/resources/public/png/" + name).toFile());
-                cardImages.add(cardImage);
+                try {
+                    BufferedImage cardImage = ImageIO.read(Paths.get("BlackJack/untitled/src/main/resources/public/png/" + name).toFile());
+                    cardImages.add(cardImage);
+                } catch (IOException e) {
+                    System.err.println("Error loading card image: " + name);
+                    e.printStackTrace();
+                }
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
