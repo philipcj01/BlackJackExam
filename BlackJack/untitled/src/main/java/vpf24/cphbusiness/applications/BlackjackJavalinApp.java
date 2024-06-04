@@ -8,10 +8,12 @@ import vpf24.cphbusiness.interfaces.GameUI;
 public class BlackjackJavalinApp implements GameUI {
     private BlackjackGame game;
     private final Javalin app;
+    private String message = "Game started. Good luck!";
+    private boolean gameOver = false;
 
     public BlackjackJavalinApp() {
         this.app = Javalin.create(config -> {
-            config.addStaticFiles("/png", Location.CLASSPATH);
+            config.addStaticFiles("/public", Location.CLASSPATH);
         }).start(7000);
 
         app.get("/", ctx -> {
@@ -19,31 +21,74 @@ public class BlackjackJavalinApp implements GameUI {
         });
 
         app.get("/hit", ctx -> {
-            game.playerHits();
-            ctx.html(renderGameState());
+            if (!gameOver) {
+                game.playerHits();
+                checkWinner();
+                ctx.html(renderGameState());
+            }
         });
 
         app.get("/stand", ctx -> {
-            game.playerStands();
-            ctx.html(renderGameState());
+            if (!gameOver) {
+                game.playerStands();
+                checkWinner();
+                ctx.html(renderGameState());
+            }
         });
 
         app.get("/deal", ctx -> {
             game.startGame();
+            resetGame();
             ctx.html(renderGameState());
         });
     }
 
+    private void checkWinner() {
+        String result = game.determineWinner();
+        switch (result) {
+            case "Player busts. Dealer wins!":
+            case "Dealer busts. Player wins!":
+            case "It's a push! No one wins.":
+            case "Player wins!":
+            case "Dealer wins!":
+                message = result;
+                gameOver = true;
+                disableHitAndStandButtons();
+                break;
+            default:
+                message = "Game continues";
+                break;
+        }
+    }
+
+    private void resetGame() {
+        message = "Game started. Good luck!";
+        gameOver = false;
+        enableHitAndStandButtons();
+    }
+
     private String renderGameState() {
         StringBuilder html = new StringBuilder();
-        html.append("<html><head></head><body>");
-        html.append("<h2>Game State</h2>");
-        html.append("<p>").append(game.getGameState()).append("</p>");
-        html.append("<h3>Player's Hand</h3>");
+        html.append("<html><head>");
+        html.append("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/styles.css\">");
+        html.append("</head><body>");
+        html.append("<h2>Black Jack</h2>");
+        html.append("<p>").append(message).append("</p>");
+        html.append("<div class='hand'>");
+        html.append("<h3>Player's Hand (").append(game.player.getHandValue()).append(")</h3>");
         html.append(visualizeHand(game.getCardName("player")));
-        html.append("<h3>Dealer's Hand</h3>");
+        html.append("</div>");
+        html.append("<div class='hand'>");
+        html.append("<h3>Dealer's Hand (").append(game.dealer.getHandValue()).append(")</h3>");
         html.append(visualizeHand(game.getCardName("dealer")));
-        html.append("<p><a href=\"/hit\">Hit</a> | <a href=\"/stand\">Stand</a> | <a href=\"/deal\">Deal</a></p>");
+        html.append("</div>");
+        html.append("<div class='buttons'>");
+        if (!gameOver) {
+            html.append("<a href=\"/hit\">Hit</a>");
+            html.append("<a href=\"/stand\">Stand</a>");
+        }
+        html.append("<a href=\"/deal\">Deal</a>");
+        html.append("</div>");
         html.append("</body></html>");
         return html.toString();
     }
@@ -52,7 +97,7 @@ public class BlackjackJavalinApp implements GameUI {
         StringBuilder visual = new StringBuilder();
         String[] cards = cardNames.split("\\s+");
         for (String card : cards) {
-            visual.append("<img src='/").append(card).append("' style='width: 100px; height: auto;'/>");
+            visual.append("<img src='/png/").append(card).append("' style='width: 100px; height: auto;'/>");
         }
         return visual.toString();
     }
@@ -69,27 +114,27 @@ public class BlackjackJavalinApp implements GameUI {
 
     @Override
     public void updatePlayerTotal(int total) {
-        // Lav implementering til at vise værdi i Javalin - laves senere
+        // Implement display logic later if needed
     }
 
     @Override
     public void updateDealerTotal(int total) {
-        // Lav implementering til at vise værdi i Javalin - laves senere
+        // Implement display logic later if needed
     }
 
     @Override
     public void disableHitAndStandButtons() {
-        // Laves senere
+        gameOver = true;
     }
 
     @Override
     public void enableHitAndStandButtons() {
-        // Laves senere
+        gameOver = false;
     }
 
     @Override
     public void displayMessage(String message) {
-        // Laves senere
+        this.message = message;
     }
 
     @Override
