@@ -72,14 +72,6 @@ public class BlackjackGame implements BlackJackInterface {
         return dealer.displayHand();
     }
 
-    @Override
-    public String getGameState() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Player's Hand:\n").append(player.displayHand())
-                .append("\nDealer's Hand:\n").append(dealer.displayHand())
-                .append("\n");
-        return sb.toString();
-    }
 
     @Override
     public String determineWinner() {
