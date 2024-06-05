@@ -6,7 +6,6 @@ public interface BlackJackInterface {
     void playerStands();
     String getPlayerHand();
     String getDealerHand();
-    String getGameState();
     String determineWinner();
     String getCardName(String playerType);
 
