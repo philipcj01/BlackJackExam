@@ -104,22 +104,18 @@ public class BlackjackJavalinApp implements GameUI {
 
     @Override
     public void updatePlayerHand(String hand) {
-        // No need to implement for Javalin
     }
 
     @Override
     public void updateDealerHand(String hand) {
-        // No need to implement for Javalin
     }
 
     @Override
     public void updatePlayerTotal(int total) {
-        // Implement display logic later if needed
     }
 
     @Override
     public void updateDealerTotal(int total) {
-        // Implement display logic later if needed
     }
 
     @Override
